@@ -1,0 +1,120 @@
+$color-primary:orange;
+$color-secondary:grey;
+$color-tertiary:royalblue;
+
+$font-lg:40px;
+$font-md:30px;
+$font-sm:20px;
+
+@mixin headingStyles($frontSize :50px){
+front-size:$frontSize;
+color:$color-secondary;
+text-align:center;
+ }
+
+ @mixin headingTransition($par...){
+transition : $par;
+ }
+
+
+.nav{
+    background-color: $color-primary;
+
+ul li {
+    list-style:none;
+}
+a{
+    text-decoration: none;
+    font-size: $font-sm;
+    color: $color-secondary;
+
+    &:hover {
+        color: $color-tertiary;
+    }
+}
+}
+
+.banner {
+    background-color: $color-primary;
+
+
+    &-heading {
+        @include headingStyles($font-lg);
+        
+    }
+
+    &-paragraph{
+        color: $color-tertiary;
+        
+    }
+}
+
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$font-size-base: 16px;
+$font-size-large: 24px;
+
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: $font-size-base;
+    color: $primary-color;
+}
+
+
+header {
+    background-color: $primary-color;
+    padding: 20px;
+
+    h1 {
+        font-size: $font-size-large;
+        color: white;
+    }
+}
+
+
+.button {
+    background-color: $secondary-color;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken($secondary-color, 10%);
+    }
+}
+  
+h3{
+    @if(2<4){
+        color: red;
+    }
+}
+
+$colors:(
+    1:red,
+    2:blue,
+    3:pink,
+    4:aqua,
+);
+
+@for $i from 1 through 4 {
+    .paragraph-#{$i} {
+        background-color: map-get($colors,$i );
+    }
+}
+
+@mixin headingSize($size){
+@if ($size==large){
+    font-size: 40px;
+} @else if ($size==medium){
+    font-size: 30px;
+}@else{
+    font-size: 25px;
+}
+}
+
+h2{
+    @include headingSize(large);
+}
